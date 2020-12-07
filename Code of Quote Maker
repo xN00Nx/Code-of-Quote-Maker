@@ -1,0 +1,51 @@
+var quote;
+var font;
+var color;
+var size;
+
+// 
+onEvent("colorInput", "change", function( ) {
+  color = getText("colorInput");
+  setProperty("quoteOutput", "background-color", color);
+  setProperty("colorOutput", "background-color", color);
+  checkMatching();
+});
+
+// Font Drop Menu
+onEvent("fontFamilyInput", "change", function( ) {
+  font = getText("fontFamilyInput");
+  setProperty("quoteOutput", "font-family", font);
+  checkMatching();
+});
+
+
+// 
+onEvent("quoteInput", "keyup", function( ) {
+  quote = getText("quoteInput");
+  setText("quoteOutput", quote);
+  checkMatching();
+});
+
+// 
+onEvent("fontSizeInput", "input", function( ) {
+  size = getNumber("fontSizeInput");
+  setProperty("quoteOutput", "font-size", size);
+  checkMatching();
+});
+
+// 
+function checkMatching() {
+  if (color == "lavender" && font == "Lucida Sans") {
+    setText("feedbackOutput", "Great Combo!");
+  } else if (color == "lightgreen" && size == 24) {
+    setText("feedbackOutput", "Looking Fresh!");
+  } else {
+    setText("feedbackOutput", "Nice design!");
+  }
+}
+
+
+
+
+
+//
